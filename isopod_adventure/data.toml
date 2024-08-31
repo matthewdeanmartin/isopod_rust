@@ -1,0 +1,28 @@
+[game]
+welcome_text = "Welcome to the Isopod Adventure Game! 🐞"
+win_text = "Congratulations! You've found all three things and won the game! 🎉"
+
+[locations.Garden]
+description = "🌷 You are in a lush garden with colorful flowers."
+north = "Pond"
+east = "Rocky Path"
+
+[locations.Pond]
+description = "🐟 You are at a peaceful pond with lilypads floating on the surface."
+south = "Garden"
+east = "Forest"
+
+[locations."Rocky Path"]
+description = "🪨 You are on a rocky path. Watch your step!"
+west = "Garden"
+north = "Forest"
+
+[locations.Forest]
+description = "🌲 You are in a dense forest with tall trees surrounding you."
+west = "Pond"
+south = "Rocky Path"
+
+[items]
+Garden = "Cookie Crumb 🍪"
+Pond = "Isopod Friend 🐾"
+Forest = "A Place to Hide 🛏️"

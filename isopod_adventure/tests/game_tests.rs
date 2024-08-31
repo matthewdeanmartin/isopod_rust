@@ -4,7 +4,7 @@ use std::collections::HashSet;
 #[test]
 fn test_move_to_valid_direction() {
     let mut game_state = GameState {
-        current_location: "Garden",
+        current_location: "Garden".parse().unwrap(),
         inventory: HashSet::new(),
         found_items: HashSet::new(),
     };
@@ -17,7 +17,7 @@ fn test_move_to_valid_direction() {
 #[test]
 fn test_move_to_invalid_direction() {
     let mut game_state = GameState {
-        current_location: "Garden",
+        current_location: "Garden".parse().unwrap(),
         inventory: HashSet::new(),
         found_items: HashSet::new(),
     };
@@ -30,42 +30,48 @@ fn test_move_to_invalid_direction() {
 #[test]
 fn test_look_around_finds_item() {
     let mut game_state = GameState {
-        current_location: "Garden",
+        current_location: "Garden".parse().unwrap(),
         inventory: HashSet::new(),
         found_items: HashSet::new(),
     };
     let locations = get_locations();
-    let items = get_items();
+    let _items = get_items();
 
-    look_around(&mut game_state, &locations, &items);
+    look_around(&mut game_state, &locations); // , &items);
     assert!(game_state.inventory.contains("Cookie Crumb 🍪"));
 }
 
 #[test]
 fn test_look_around_no_item() {
     let mut game_state = GameState {
-        current_location: "Rocky Path",
+        current_location: "Rocky Path".parse().unwrap(),
         inventory: HashSet::new(),
         found_items: HashSet::new(),
     };
     let locations = get_locations();
-    let items = get_items();
+    let _items = get_items();
 
-    look_around(&mut game_state, &locations, &items);
+    look_around(&mut game_state, &locations); //, &items);
     assert!(game_state.inventory.is_empty());
 }
 
 #[test]
 fn test_win_condition() {
     let mut game_state = GameState {
-        current_location: "Garden",
+        current_location: "Garden".parse().unwrap(),
         inventory: HashSet::new(),
         found_items: HashSet::new(),
     };
 
-    game_state.inventory.insert("Cookie Crumb 🍪");
-    game_state.inventory.insert("Isopod Friend 🐾");
-    game_state.inventory.insert("A Place to Hide 🛏️");
+    game_state
+        .inventory
+        .insert("Cookie Crumb 🍪".parse().unwrap());
+    game_state
+        .inventory
+        .insert("Isopod Friend 🐾".parse().unwrap());
+    game_state
+        .inventory
+        .insert("A Place to Hide 🛏️".parse().unwrap());
 
     assert_eq!(game_state.inventory.len(), 3); // Check win condition
 }
