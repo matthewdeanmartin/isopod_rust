@@ -1,0 +1,26 @@
+# justfile for building, formatting, linting, testing, and packaging Rust project
+
+default: all
+
+# Run all tasks
+all: format lint test build
+
+# Format the code
+format:
+    cargo fmt --all
+
+# Lint the code
+lint:
+    cargo clippy --all-targets --all-features -- -D warnings
+
+# Run unit tests
+test:
+    cargo test
+
+# Build the release version
+build:
+    cargo build --release
+
+# Clean the project
+clean:
+    cargo clean
