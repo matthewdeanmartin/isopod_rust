@@ -18,3 +18,6 @@ build:
 
 clean:
 	cargo clean
+
+run:
+	cargo run --release
